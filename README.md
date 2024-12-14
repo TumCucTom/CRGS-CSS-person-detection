@@ -57,7 +57,7 @@ First let's import the dependencies:
 - OpenCV (cv2) for taking in and outputting images
 - Numpy for performing some parsing [(you'll see later)](#output-predictions)
 - Requests so that we can make RESTful calls to roboflow
-- Because we're not cavemen, we'll also put a docstring too
+- Because we're not cave(men/women), we'll also put a docstring too
 
 ```angular2html
 """Put bounding boxes around people in a room"""
@@ -205,6 +205,17 @@ Finally, we can parse the json response to get the predictions and return the im
 # Parse result image
 new_image = np.asarray(bytearray(resp.read()), dtype="uint8")
 new_image = cv2.imdecode(new_image, cv2.IMREAD_COLOR)
+
+return new_image
+```
+
+again, we're not cave(men/women) so let's add a docstring for our function:
+```angular2html
+def infer():
+    """Infer via the Roboflow Infer API and return the result"""
+    ...
+    ...
+    return new_image
 ```
 
 ## 1.7 DONE!
