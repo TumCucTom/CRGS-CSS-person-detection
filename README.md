@@ -55,7 +55,7 @@ First let's import the dependencies:
 
 - We want base64 for encoding our image
 - OpenCV (cv2) for taking in and outputting images
-- Numpy for performing some calculations to get our image to the right input size for our NN model
+- Numpy for performing some parsing [(you'll see later)](#output-predictions)
 - Requests so that we can make RESTful calls to roboflow
 - Because we're not cavemen, we'll also put a docstring too
 
@@ -67,7 +67,7 @@ import numpy as np
 import requests
 ```
 
-## 1.1.1 Getting images from webcam
+## 1.2 Getting images from webcam
 
 Assuming you have a webcam on the machine you're working on, we're going to pull images from that webcam upon request.
 
@@ -85,7 +85,7 @@ We should also correctly release these resources at the bottom of our script
 video.release()
 cv2.destroyAllWindows()
 ```
-## Main loop
+## 1.3 Main loop
 We want our program to take in a frame from our camera, process it, display it and loop until we decide we're bored (or until you've finished filming yourself and your mates in little boxes to plaster over social media).
 
 So we'll make a loop (I wish I didn't need to specify but this goes before we release the camera).
@@ -125,7 +125,7 @@ while cv2.waitKey(1) != ord('q'):
 ```
 I'll let you decide what's best
 
-### Process our image
+## 1.4 Process our image
 Let's implement our ```infer() function```. We'll get the current frame and return from new frame:
 ```angular2html
 def infer():
@@ -160,15 +160,59 @@ img_str = base64.b64encode(buffer)
 
 These are all pretty standard operations, but if you wanted to ask about anything Oscar and I are there in person for a reason!
 
-## Using our model
+## 1.5 Using our model
 Now our image is ready to be sent off and processed by the model. How are we going to do this? [Roboflow](https://roboflow.com/) is great for computer vision projects and it provides a great suite to train a network. Given that training a network takes hours, even if we exclude the time to find, augment, preprocess a dataset, tune hyper parameters etc, I've got a pretrained model for you to use. [For now!](#your-own-model)
 
+So, first we need to get some information so that we can actually call the API. The API details can be found in the roboflow-info.txt. Let's bring them into our project and create our upload URL. 
+
+First we bring in the details, and whilst we're importing this, we might as well might our code more generalised by also adding an imported constant for size:
+```angular2html
+
+```
+then, make our URL
+```angular2html
+UPLOAD_URL = "".join([
+    "https://detect.roboflow.com/",
+    ROBOFLOW_MODEL,
+    "?access_token=",
+    ROBOFLOW_API_KEY,
+    "&format=image",
+    "&stroke=5"
+])
+```
+and update our previous code to have ```scale = ROBOFLOW_SIZE / max(height, width)``` instead of ```scale = 416 / max(height, width)```.
+
+```"&stroke=5"``` is just saying ...
+
+Now that we have our URL, we can make a RESTful call to the API which will return a JSON containing, amongst other things, details of all, if any, predictions.
 ```angular2html
 # Get prediction from Roboflow Infer API
 resp = requests.post(UPLOAD_URL, data=img_str, headers={
     "Content-Type": "application/x-www-form-urlencoded"
 }, stream=True,timeout=5.0).raw
 ```
+What we're saying is:
+- thi
+
+## 1.6 Output predictions
+Finally, we can parse the json response to get the predictions and return the image to be displayed:
+- parse the json response with .read()
+- cast to a bytearray
+- us np to convert back to pythons representation of an image
+- use open cv to give the bounding boxes colour
+
+```angular2html
+# Parse result image
+new_image = np.asarray(bytearray(resp.read()), dtype="uint8")
+new_image = cv2.imdecode(new_image, cv2.IMREAD_COLOR)
+```
+
+## 1.7 DONE!
+Run your code (in your env) with:
+```angular2html
+python3 person-detection.py
+```
+and bask in your glory.
 
 ## Your own model
 
