@@ -158,7 +158,7 @@ _, buffer = cv2.imencode('.jpg', img)
 img_str = base64.b64encode(buffer)
 ```
 
-These are all pretty standard operations, but if you wanted to ask about anything Oscar and I are there in person for a reason!
+These are all pretty standard operations, but if you wanted to ask about anything: Oscar and I are there in person for a reason! If you really hate talking to people, you could always consult [a trusted friend](https://www.chatgpt.com)...
 
 ## 1.5 Using our model
 Now our image is ready to be sent off and processed by the model. How are we going to do this? [Roboflow](https://roboflow.com/) is great for computer vision projects and it provides a great suite to train a network. Given that training a network takes hours, even if we exclude the time to find, augment, preprocess a dataset, tune hyper parameters etc, I've got a pretrained model for you to use. [For now!](#your-own-model)
@@ -167,9 +167,30 @@ So, first we need to get some information so that we can actually call the API. 
 
 First we bring in the details, and whilst we're importing this, we might as well might our code more generalised by also adding an imported constant for size:
 ```angular2html
+# Load the roboflow info
+config_file = "roboflow_info.txt"
+config = load_config(config_file)
 
+# Extract variables
+ROBOFLOW_API_KEY = config.get("ROBOFLOW_API_KEY")
+ROBOFLOW_MODEL = config.get("ROBOFLOW_MODEL")
+ROBOFLOW_SIZE = int(config.get("ROBOFLOW_SIZE"))
 ```
-then, make our URL
+and to actually load those variables, you should be able to write your own function. One like this will do fine:
+```angular2html
+def load_config(filepath):
+    """ Read constants from a .txt"""
+    config = {}
+    with open(filepath, 'r') as file:
+        for line in file:
+            # Skip empty lines and comments
+            if line.strip() and not line.startswith("#"):
+                key, value = line.strip().split("=", 1)
+                config[key] = value
+    return config
+```
+
+Now let's use the variables to create our URL:
 ```angular2html
 UPLOAD_URL = "".join([
     "https://detect.roboflow.com/",
@@ -182,7 +203,7 @@ UPLOAD_URL = "".join([
 ```
 and update our previous code to have ```scale = ROBOFLOW_SIZE / max(height, width)``` instead of ```scale = 416 / max(height, width)```.
 
-```"&stroke=5"``` is just saying ...
+```"&stroke=5"``` is just saying we want the bounding boxes to be 5 pixels thick. The rest is self explanatory.
 
 Now that we have our URL, we can make a RESTful call to the API which will return a JSON containing, amongst other things, details of all, if any, predictions.
 ```angular2html
@@ -192,7 +213,13 @@ resp = requests.post(UPLOAD_URL, data=img_str, headers={
 }, stream=True,timeout=5.0).raw
 ```
 What we're saying is:
-- thi
+- Make a HTTP POST request with the image as data
+- The header is specifying the MME type
+  - The string after is just standard format for form data
+- Steam is used as we want to keep the connection open
+  - This is because we're using real time data
+- We want a timeout error if we don't get a response in 5 seconds
+- We want the information returned as byte stream because we're dealing with an image, hence ```.raw```
 
 ## 1.6 Output predictions
 Finally, we can parse the json response to get the predictions and return the image to be displayed:
@@ -224,6 +251,8 @@ Run your code (in your env) with:
 python3 person-detection.py
 ```
 and bask in your glory.
+
+If you're having any errors you can't solve just grab Oscar or I.
 
 ## Your own model
 
