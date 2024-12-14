@@ -4,6 +4,7 @@
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 # CRGS-CSS-person-detection
+If you want to do this as part of the in person challenge, quickly read the details [here](#31-challenge) before starting.
 
 ## 0.1 Download this repo
 Download this repo via the zip (and unzip it) or with:
@@ -305,6 +306,17 @@ AND of course, if you want to do something different, go for it! How am I going 
 Get your API key from your account settings. Replace the info in roboflow-info.txt...
 
 ...BASK IN EVEN MORE **GLORY**!
+
+## 3.1 Challenge
+You should create a short and entertaining video (max 2 mins), outlining what you learnt and how you found it. You do this is small pairs if you wish.
+
+Scoring:
+- 50 points for finishing all of 1
+- 50 points for finishing all of 2
+- max 50 points for creativity
+- max 50 point for the content of the video
+
+It's not a fastest person wins! Just submit by EoD (this should give you time for your model to train).
 
 ## Bonus
 
