@@ -311,7 +311,7 @@ Get your API key from your account settings. Replace the info in roboflow-info.t
 
 **Undisclosed prizes for the top 3 submissions!**
 
-You should create a short and entertaining video (max 2 mins), outlining what you learnt and how you found it. You do this is small pairs if you wish.
+You should create a short and entertaining video (max 2 mins), outlining what you learnt and how you found this project. You can do this is small pairs if you wish.
 
 Scoring:
 - 50 points for finishing all of 1
