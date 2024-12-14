@@ -12,7 +12,7 @@ git clone git@github.com:TumCucTom/CRGS-CSS-person-detection.git
 ```
 or
 ```angular2html
-git clone github.com/TumCucTom/CRGS-CSS-person-detection/
+git clone https://github.com/TumCucTom/CRGS-CSS-person-detection.git
 ```
 If you don't have git setup on your machine:
 - You should - but do this later
