@@ -267,22 +267,39 @@ You can double click "person-data.v3i.yolov8.zip" on mac or unzip using winrar o
 Create a [roboflow](https://www.roboflow.com) account and you should get 3 free training credits.
 
 Create a project, new project button in the top right and set the following:
-
-Upload your dataset, you should be able to just add the folder you decompressed and automatically roboflow will split into train, valid and test based on the sub-dirs. (I explain about this as well as annotations [here](#23-understanding-what-youve-just-done):
-
+![1](images/setup.png)
+Upload your dataset, you should be able to just add the folder you decompressed and automatically roboflow will split into train, valid and test based on the sub-dirs. (I explain about this as well as annotations [here](#23-understanding-what-youve-just-done)):
+![2](images/dataset.png)
 You should then go to the versions tab:
-
+![3](images/version.png)
 Apply no pre-processing and augmentation as I've already done this :)
+![4](images/pre-process.png)
 
-Create a new model by clicking the button "train":
-
-You should train from the MSCOCO object detection checkpoint, for reasons explained [here](#23-understanding-what-youve-just-done)
+Create a new model by clicking the button "train". You should train from the MSCOCO object detection checkpoint, for reasons explained [here](#23-understanding-what-youve-just-done).
 
 WAIT :(
 
 It'll take a few of hours
 
 ## 2.3 Understanding what you've just done
+Train, Valid, Test - Without going in depth about how neural networks work, consider the following: A networks learns by trying to predict what the right answer would be, compares that to the correct answer and 'learns' from that. Once we're happy with how the network is, we can test its performance on a validation dataset (we need new images as otherwise we're not really checking if a network can - say detect humans - we're instead seeing how good the network is a reproducing whatever was given in the training data). We can use this to improve training by, in training performing this idea of testing intermediately. This helps reduce something called [overfitting](https://en.wikipedia.org/wiki/Overfitting). 
+
+Annotations - For this dataset they're in the form that yolov8 would expect. All they are is telling the network where the bounding boxes should have been. The networks uses these to help itself 'learn'. If you want to know more about this, you should look into [back propagation](https://en.wikipedia.org/wiki/Backpropagation).
+
+MS COCO Object Detection Checkpoint - At its very basics a neural network is just a lot of multiplying and adding (weight and biases). Instead of starting for everything at 0 (or from some gausian distribution), we can start our network learning from a tried and tested model that's designed for recognising objects.
+
+The above is only a very brief overview of some (actually not so important parts if you just want to understand NNs). The things I would suggest to start your ML journey are:
+- Look into MDP
+- Look into Q-learning 
+- Watch [this series](https://www.youtube.com/watch?v=aircAruvnKk) by 3blue1brown
+- Read [this 'paper'](http://neuralnetworksanddeeplearning.com/) by Michael Nielson
+- Try a deep q project
+
+
+You can decide weather you go more theoretical or practical some there on out, but I think this is a great starting place to have some first hand experience and a good foundation of theoretical understanding.
+AND of course, if you want to do something different, go for it! How am I going to force you to do this? If you do want more info on what I did or what else you can do, you can always email me!
+
+
 
 ## 2.4 Using your trained model
 Get your API key from your account settings. Replace the info in roboflow-info.txt...
