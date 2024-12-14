@@ -254,7 +254,40 @@ and bask in your glory.
 
 If you're having any errors you can't solve just grab Oscar or I.
 
+If you do take some photos or videos please do share them with Oscar and I: tombale@shopvelworks.com or just ask us for a phone number to send them too :)
+
 ## 2.1 Your own model
+
+Let's first get the dataset I used - unless you're desperate to find, augment and pre-process your own data (don't - you have a NEA to focus on).
+
+You can double click "person-data.v3i.yolov8.zip" on mac or unzip using winrar or similar on windows.
+
+## 2.2 Uploading your dataset
+
+Create a [roboflow](https://www.roboflow.com) account and you should get 3 free training credits.
+
+Create a project, new project button in the top right and set the following:
+
+Upload your dataset, you should be able to just add the folder you decompressed and automatically roboflow will split into train, valid and test based on the sub-dirs. (I explain about this as well as annotations [here](#23-understanding-what-youve-just-done):
+
+You should then go to the versions tab:
+
+Apply no pre-processing and augmentation as I've already done this :)
+
+Create a new model by clicking the button "train":
+
+You should train from the MSCOCO object detection checkpoint, for reasons explained [here](#23-understanding-what-youve-just-done)
+
+WAIT :(
+
+It'll take a few of hours
+
+## 2.3 Understanding what you've just done
+
+## 2.4 Using your trained model
+Get your API key from your account settings. Replace the info in roboflow-info.txt...
+
+...BASK IN EVEN MORE **GLORY**!
 
 ## Bonus
 
