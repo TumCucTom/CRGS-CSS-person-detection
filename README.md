@@ -163,7 +163,7 @@ These are all pretty standard operations, but if you wanted to ask about anythin
 ## 1.5 Using our model
 Now our image is ready to be sent off and processed by the model. How are we going to do this? [Roboflow](https://roboflow.com/) is great for computer vision projects and it provides a great suite to train a network. Given that training a network takes hours, even if we exclude the time to find, augment, preprocess a dataset, tune hyper parameters etc, I've got a pretrained model for you to use. [For now!](#your-own-model)
 
-So, first we need to get some information so that we can actually call the API. The API details can be found in the roboflow-info.txt. Let's bring them into our project and create our upload URL. 
+So, first we need to get some information so that we can actually call the API. The API details can be found in the roboflow-info.txt. Let's bring them into our project and create our upload URL. You'll notice the API key says "ASK ME" and that's what you should do! **Don't** publish you API keys to github, kids.
 
 First we bring in the details, and whilst we're importing this, we might as well might our code more generalised by also adding an imported constant for size:
 ```angular2html
@@ -254,7 +254,7 @@ and bask in your glory.
 
 If you're having any errors you can't solve just grab Oscar or I.
 
-## Your own model
+## 2.1 Your own model
 
 ## Bonus
 
