@@ -159,7 +159,7 @@ Encoding will come in the [optional extensions](#41-optional-extensions)
 These are all pretty standard operations, but if you wanted to ask about anything: Oscar and I are there in person for a reason! If you really hate talking to people, you could always consult [a trusted friend](https://www.chatgpt.com)...
 
 ## 1.5 Communicating with roboflow
-Now our image is ready to be sent off and processed by the model. How are we going to do this? [Roboflow](https://roboflow.com/) is great for computer vision projects and it provides a great suite to train a network. Given that training a network takes hours, even if we exclude the time to find, augment, preprocess a dataset, tune hyper parameters etc, I've got a pretrained model for you to use. [For now!](#your-own-model)
+Now our image is ready to be sent off and processed by the model. How are we going to do this? [Roboflow](https://roboflow.com/) is great for computer vision projects and it provides a great suite to train a network. Given that training a network takes hours, even if we exclude the time to find, augment, preprocess a dataset, tune hyper parameters etc, I've got a pretrained model for you to use. [For now!](#21-your-own-model)
 
 So, first we need to get some information so that we can actually call the API. The API details can be found in the roboflow-info.json. Let's bring them into our project and create our upload URL. You'll notice the API key says "ASK ME" and that's what you should do! **Don't** publish you API keys to github, kids.
 
@@ -249,7 +249,7 @@ def infer():
     ...
 ```
 
-If you're at all consumed about any of this, come talk to one us, but it's pretty mundane.
+If you're at all consumed about any of this, come talk to one us, but be warned, it's pretty mundane.
 
 ## 1.8 DONE!
 Run your code (in your env) with:
@@ -262,9 +262,9 @@ c:\[path to folder]CRGS-CSS-person-detection\env\bin\python.exe person-detection
 ```
 and bask in your glory.
 
-If you get an error that reads something like "this function expected something but it got nothing" or "we expected and array with 4 items and you gave nothing", first try adding ```time.sleep(5)``` or ```(10)``` (you'll also need to ```import time```). This will allow your webcam to wake up so you're not submitting and empty image. If you're having any other errors you can't solve just grab Oscar or I.
+**If you get an error** that reads something like "this function expected something but it got nothing" or "we expected and array with 4 items and you gave nothing", first try adding ```time.sleep(5)``` or ```(10)``` (you'll also need to ```import time```). This will allow your webcam to wake up so you're not submitting and empty image. If you're having any other errors you can't solve just grab Oscar or I.
 
-If you do take some photos or videos please do share them with Oscar and I: tombale@shopvelworks.com or just ask us for a phone number to send them too :)
+If you do **take some photos** or videos please do share them with Oscar and I: tombale@shopvelworks.com or just ask us for a phone number to send them too :)
 
 ## 2.1 Your own model
 
@@ -310,7 +310,7 @@ You can decide weather you go more theoretical or practical some there on out, b
 AND of course, if you want to do something different, go for it! How am I going to force you to do this? If you do want more info on what I did or what else you can do, you can always email me!
 
 ## 2.4 Using your trained model
-Get your API key from your account settings. Replace the info in roboflow-info.txt...
+Get your API key from your account settings. Replace the info in roboflow-info.json, including project name and version...
 
 ...BASK IN EVEN MORE **GLORY**!
 
