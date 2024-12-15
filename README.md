@@ -23,17 +23,22 @@ You can now open the project in your favourite IDE
 
 ## 0.2  Setup your machine
 
-Download [python 3](https://www.python.org/downloads/) if you have not already.
+Download [python 3](https://www.python.org/downloads/) if you have not already. You can check this with ```python3 --version``` on mac or ```py --version``` on windows.
 
-If your terminal does not say ```CRGS-CSS-person-detection %``` or similar, go into this project which your just downloaded:
+If your terminal does not say ```CRGS-CSS-person-detection %``` or similar, go into this project which you just downloaded:
 ```angular2html
-cd CRGS-CSS-person-detection
+cd [path to]/CRGS-CSS-person-detection
 ```
 
-Setup your python environment with
+Setup your python environment with:
 ```
 python3 -m venv [path to your env]
 source [path to your env]/bin/activate
+```
+or for windows
+```
+py -m venv [path to env]
+[path to env]\Scripts\activate
 ```
 
 Your console should now look something like this ```(env) You@Your-machine-name ~ %```. Slighty different if you are on windows (eugh). What's important is that you are now in your environment.
