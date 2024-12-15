@@ -35,7 +35,7 @@ Setup your python environment with:
 python3 -m venv [path to your env]
 source [path to your env]/bin/activate
 ```
-or for windows
+or, for windows
 ```
 py -m venv [path to env]
 [path to env]\Scripts\activate
@@ -47,11 +47,15 @@ Now install the dependencies needed for the project with:
 ```angular2html
 pip3 install requirements.txt
 ```
-## 1.1 Using a prebuilt NN
+or, for windows:
+```angular2html
+py -m pip install opencv-python numpy requests
+```
+## 1.1 Using a prebuilt NN (Neural network)
 
 Let's start coding now!
 
-Open the empty python file in the root of this directory. Probably by double clicking on the file "person-detection.py" in your IDE. Or if you're crazy:
+Open the empty python file in the root of this directory. Probably by double-clicking on the file "person-detection.py" in your IDE. Or if you're crazy:
 ```angular2html
 nano person-detection.py
 vim person-detection.py
@@ -174,7 +178,7 @@ So, first we need to get some information so that we can actually call the API. 
 First we bring in the details, and whilst we're importing this, we might as well might our code more generalised by also adding an imported constant for size:
 ```angular2html
 # Load the roboflow info
-config_file = "roboflow_info.txt"
+config_file = "roboflow-info.txt"
 config = load_config(config_file)
 
 # Extract variables
@@ -255,6 +259,10 @@ def infer():
 Run your code (in your env) with:
 ```angular2html
 python3 person-detection.py
+```
+or
+```angular2html
+c:\[path to folder]CRGS-CSS-person-detection\env\bin\python.exe person-detection.py
 ```
 and bask in your glory.
 
