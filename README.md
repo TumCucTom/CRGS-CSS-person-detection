@@ -45,7 +45,7 @@ Your console should now look something like this ```(env) You@Your-machine-name 
 
 Now install the dependencies needed for the project with:
 ```angular2html
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 or, for windows:
 ```angular2html
