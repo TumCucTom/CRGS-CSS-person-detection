@@ -251,7 +251,27 @@ def infer():
 
 If you're at all consumed about any of this, come talk to one us, but be warned, it's pretty mundane.
 
-## 1.8 DONE!
+## 1.8 Minor optimisation
+We don't want to run unnecessary code if we don't have to You should put all code after ```predictions = ...```
+into a an if statement:
+```angular2html
+if len(predictions) > 0:
+    # Convert predictions to the sv.Detections format
+    xyxy = []
+    class_ids = []
+    confidences = []
+    ...
+    ...
+    ...
+    cv2.imshow("Live footage", annotated_frame)
+```
+Now we need to update the footage with a non-adjusted image so that we don't have a stil frame but live footage:
+```angular2html
+else:
+cv2.imshow('Live footage', img)
+```
+
+## 1.9 DONE!
 Run your code (in your env) with:
 ```angular2html
 python3 person-detection.py
