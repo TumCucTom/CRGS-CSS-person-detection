@@ -258,6 +258,11 @@ python3 person-detection.py
 ```
 or
 ```angular2html
+py person-detection.py
+```
+
+If not in env, you might try:
+```angular2html
 c:\[path to folder]CRGS-CSS-person-detection\[env name]\Scripts\python.exe person-detection.py
 ```
 and bask in your glory.
