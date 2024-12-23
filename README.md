@@ -17,7 +17,7 @@ git clone https://github.com/TumCucTom/CRGS-CSS-person-detection.git
 ```
 If you don't have git setup on your machine:
 - You should - but do this later
-- Just download the .zip for now and live in shame as your classmates mock you
+- Just download the .zip for now
 
 You can now open the project in your favourite IDE
 
@@ -41,7 +41,7 @@ py -m venv [path to env]
 [path to env]\Scripts\activate
 ```
 
-Your console should now look something like this ```(env) You@Your-machine-name ~ %```. Slighty different if you are on windows (eugh). What's important is that you are now in your environment.
+Your console should now look something like this ```(env) You@Your-machine-name ~ %```. Slighty different if you are on window. What's important is that you are now in your environment.
 
 Now install the dependencies needed for the project with:
 ```angular2html
@@ -252,23 +252,16 @@ def infer():
 If you're at all consumed about any of this, come talk to one us, but be warned, it's pretty mundane.
 
 ## 1.8 Minor optimisation
-We don't want to run unnecessary code if we don't have to You should put all code after ```predictions = ...```
-into a an if statement:
+We don't want to run unnecessary code if we don't have to. So,:
 ```angular2html
-if len(predictions) > 0:
-    # Convert predictions to the sv.Detections format
-    xyxy = []
-    class_ids = []
-    confidences = []
-    ...
-    ...
-    ...
-    cv2.imshow("Live footage", annotated_frame)
+if len(predictions) == 0:
+    return
 ```
 Now we need to update the footage with a non-adjusted image so that we don't have a stil frame but live footage:
 ```angular2html
-else:
-cv2.imshow('Live footage', img)
+if len(predictions) == 0:
+    cv2.imshow('Live footage', img)
+    return
 ```
 
 ## 1.9 DONE!
